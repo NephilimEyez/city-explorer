@@ -20,12 +20,22 @@ None yet
 
 ## Time Estimates
 
-Name of feature: ________________________________
+Name of feature: _Explore form_
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _45 min_
 
-Start time: _____
+Start time: _5:50_
 
-Finish time: _____
+Finish time: _forgot_
 
-Actual time needed to complete: _____
+Actual time needed to complete: _no long_
+
+Name of feature: _render map_
+
+Estimate of time needed to complete: _1 hour_
+
+Start time: _unknown_
+
+Finish time: _hasn't happened yet_
+
+Actual time needed to complete: _too long_

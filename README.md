@@ -20,11 +20,11 @@ None yet
 
 ## Time Estimates
 
-Name of feature: ________________________________
+Name of feature: _Explore form_
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _45 min_
 
-Start time: _____
+Start time: _5:50_
 
 Finish time: _____
 

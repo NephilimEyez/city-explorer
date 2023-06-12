@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
+import Map from './Map';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,7 +49,10 @@ class App extends React.Component {
         {
           this.state.error
           ? <p>{this.state.errorMsg}</p>
-          : <p>{this.state.locationData.display_name}, {this.state.locationData.lat} {this.state.locationData.lon}</p>
+          : <Map 
+          lat={this.state.locationData.lat} 
+          lon={this.state.locationData.lon}
+          />
         }
       </>
     )

@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import Map from './Map';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +9,11 @@ class App extends React.Component {
       city: '',
       locationData: [],
       error: false,
-      errorMsg: ''
+      errorMsg: '',
+      lat: '',
+      lon: '',
+      mapImg: '',
+      API_KEY: process.env.REACT_APP_LOCATIONIQ_API
     }
   }
 
@@ -20,12 +23,16 @@ class App extends React.Component {
     event.preventDefault();
 
     try {
-      let url = `https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATIONIQ_API}&q=${this.state.city}&format=json`;
+      let url = `https://us1.locationiq.com/v1/search?key=${this.state.API_KEY}&q=${this.state.city}&format=json`;
 
       let cityDataFromAxios = await axios.get(url);
+      console.log(cityDataFromAxios.data[0]);
 
       this.setState({
         locationData: cityDataFromAxios.data[0],
+        lat: cityDataFromAxios.data[0].lat,
+        lon: cityDataFromAxios.data[0].lon,
+        mapImg: `https://maps.locationiq.com/v3/staticmap?key=${this.state.API_KEY}&center=${cityDataFromAxios.data[0].lat},${cityDataFromAxios.data[0].lon}&zoom=10&size='25vw'x'25vw'&format=png&maptype=roadmap'>`,
         error: false,
         errorMsg: ''
       })
@@ -37,24 +44,22 @@ class App extends React.Component {
     }
   }
 
+
   render() {
     return (
-      <>
-      <form onSubmit={this.handleGetCityInfo}>
-          <label htmlFor=""> Enter a City Name:
-            <input type="text" onInput={this.handleCityInput} />
-          </label>
-          <button type="submit">Explore!</button>
-        </form>
-        {
-          this.state.error
-          ? <p>{this.state.errorMsg}</p>
-          : <Map 
-          lat={this.state.locationData.lat} 
-          lon={this.state.locationData.lon}
-          />
-        }
-      </>
+      <main>
+        <form onSubmit={this.handleGetCityInfo}>
+            <label htmlFor=""> Enter a City Name:
+              <input type="text" onInput={this.handleCityInput} />
+            </label>
+            <button type="submit">Explore!</button>
+          </form>
+          {
+            this.state.error
+            ? <p>{this.state.errorMsg}</p>
+            : <div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div>
+          }
+      </main>
     )
   }
 }

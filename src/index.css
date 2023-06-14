@@ -31,3 +31,22 @@ label {
   justify-content: space-around;
   align-items: center;
 }
+
+#weatherContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.weatherDay {
+  width: 12vw;
+  padding: 10px 5px;
+}
+
+.weatherDay:nth-child(2n+1) {
+  background-color: rgba(52, 158, 252, 0.329);
+}
+
+.weatherDay:nth-child(2n+2) {
+  background-color: rgba(209, 221, 40, 0.329);
+}

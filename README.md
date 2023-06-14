@@ -18,6 +18,10 @@ n/a
 ## Credit and Collaborations
 None yet
 
+## WRRC
+
+![](./public/wrrc.png)
+
 ## Time Estimates
 
 Name of feature: _Explore form_

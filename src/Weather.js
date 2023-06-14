@@ -14,9 +14,7 @@ class Weather extends React.Component {
                         <p>Date {day.date}</p>
                         <p>Description: {day.description}</p>
                     </div>
-                }
-
-                )}
+                })}
             </div>
         )
     }

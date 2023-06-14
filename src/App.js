@@ -57,7 +57,7 @@ class App extends React.Component {
           {
             this.state.error
             ? <p>{this.state.errorMsg}</p>
-            : <div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div>
+            : <div>{this.state.lon && <div id='return_container'><div><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div><div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div></div>}</div>
           }
       </main>
     )

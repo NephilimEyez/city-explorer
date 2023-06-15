@@ -54,6 +54,8 @@ class App extends React.Component {
       let weatherData = weatherAxiosData.data;
       this.setState({
         weatherData,
+        error: false,
+        errorMsg: ''
       })
     } catch (error) {
       this.setState({
@@ -68,7 +70,7 @@ class App extends React.Component {
     return (
       <main>
         <form onSubmit={this.handleGetCityInfo}>
-            <label htmlFor=""> Enter a City Name:
+            <label> Enter a City Name:
               <input type="text" onInput={this.handleCityInput} />
             </label>
             <button type="submit">Explore!</button>

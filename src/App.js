@@ -38,7 +38,7 @@ class App extends React.Component {
         error: false,
         errorMsg: ''
       })
-      this.getWeather();
+      this.getWeather(cityDataFromAxios.data[0].lat, cityDataFromAxios.data[0].lon);
     } catch (error) {
       this.setState({
         error: true,
@@ -47,12 +47,11 @@ class App extends React.Component {
     }
   }
 
-  getWeather = async () => {
+  getWeather = async (lat, lon) => {
     try {
-      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}`;
+      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${lat}&lon=${lon}`;
       let weatherAxiosData = await axios.get(weatherUrl);
       let weatherData = weatherAxiosData.data;
-      console.log(weatherAxiosData);
       this.setState({
         weatherData,
       })
@@ -79,7 +78,7 @@ class App extends React.Component {
             ? <p>{this.state.errorMsg}</p>
             : <div>
                 {this.state.lon && <div id='return_container'><div><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div><div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div></div>}
-                {this.state.weatherData.length > 0 && <Weather forecast={this.state.weatherData} />}
+                {this.state.weatherData[1] && <Weather forecast={this.state.weatherData} />}
               </div>
           }
       </main>

@@ -15,7 +15,6 @@ class App extends React.Component {
       lon: '',
       mapImg: '',
       weatherData: [],
-      // condition: '',
       API_KEY: process.env.REACT_APP_LOCATIONIQ_API
     }
   }
@@ -48,34 +47,9 @@ class App extends React.Component {
     }
   }
 
-  // createIcon = () => {
-  //   // let holder = '';
-  //   if(this.props.forecast.description.toLowerCase() === 'light rain') {
-  //       // holder = 'wi wi-sprinkle';
-  //       this.setState({
-  //           condition: 'wi wi-sprinkle'
-  //       })
-  //       // return holder;
-  //   } else if (this.props.forecast.description.toLowerCase() === 'broken clouds') {
-  //       // holder = 'wi wi-night-partly-cloudy'
-  //       this.setState({
-  //           condition: 'wi wi-night-partly-cloudy'
-  //       })
-  //       // return holder;
-  //   } else if (this.props.forecast.description.toLowerCase() === 'scattered clouds') {
-  //       this.setState({
-  //           condition: 'wi wi-cloud'
-  //       })
-  //   } else {
-  //       this.setState({
-  //           condition: 'wi wi-alien'
-  //       })
-  //   }
-  // }
-
   getWeather = async () => {
     try {
-      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.city}`;
+      let weatherUrl = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.lat}&lon=${this.state.lon}`;
       let weatherAxiosData = await axios.get(weatherUrl);
       let weatherData = weatherAxiosData.data;
       console.log(weatherAxiosData);
@@ -105,7 +79,7 @@ class App extends React.Component {
             ? <p>{this.state.errorMsg}</p>
             : <div>
                 {this.state.lon && <div id='return_container'><div><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div><div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div></div>}
-                {this.state.weatherData.length > 0 && <Weather forecast={this.state.weatherData} condition={this.state.condition} />}
+                {this.state.weatherData.length > 0 && <Weather forecast={this.state.weatherData} />}
               </div>
           }
       </main>

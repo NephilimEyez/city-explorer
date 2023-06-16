@@ -1,5 +1,4 @@
 import React from "react";
-// import Icon from './Icon';
 
 class Weather extends React.Component {
 
@@ -10,7 +9,7 @@ class Weather extends React.Component {
             <div id="weatherContainer">
                 {this.props.forecast.map((day, index) => {
                     return <div key={index} className="weatherDay">
-                        {/* <p><Icon condition={this.props.condition}/></p> */}
+                        <img src="./public/icons/{day.icon}.png" alt="" />
                         <p>Date {day.date}</p>
                         <p>Description: {day.description}</p>
                     </div>

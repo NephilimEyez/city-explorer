@@ -1,4 +1,5 @@
 import React from "react";
+import WeatherDay from './modules/WeatherDay';
 
 class Weather extends React.Component {
 
@@ -6,15 +7,7 @@ class Weather extends React.Component {
 
     render () {
         return (
-            <div id="weatherContainer">
-                {this.props.forecast.map((day, index) => {
-                    return <div key={index} className="weatherDay">
-                        <img src="./public/icons/{day.icon}.png" alt="" />
-                        <p>Date: {day.date}</p>
-                        <p>Description: {day.description}</p>
-                    </div>
-                })}
-            </div>
+            <WeatherDay forecast={this.props.forecast}/>
         )
     }
 }

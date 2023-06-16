@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import Weather from './Weather';
-import Movie from './Movie';
+import Movies from './Movies';
 
 class App extends React.Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class App extends React.Component {
                   {this.state.lon && <div id='city_header'><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div>}
                   <div id='return_container'>
                   {this.state.lon && <div id='map_box'>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div>}
-                  {this.state.movieData[1] && <Movie movieData={this.state.movieData} />}
+                  {this.state.movieData[1] && <Movies movieData={this.state.movieData} />}
                 </div>
                   {this.state.weatherData[1] && <Weather forecast={this.state.weatherData} />}
               </div>

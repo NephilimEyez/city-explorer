@@ -10,7 +10,7 @@ class Weather extends React.Component {
                 {this.props.forecast.map((day, index) => {
                     return <div key={index} className="weatherDay">
                         <img src="./public/icons/{day.icon}.png" alt="" />
-                        <p>Date {day.date}</p>
+                        <p>Date: {day.date}</p>
                         <p>Description: {day.description}</p>
                     </div>
                 })}

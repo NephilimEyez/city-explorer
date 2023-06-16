@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import Weather from './Weather'
+import Weather from './Weather';
+import Movie from './Movie';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
       lon: '',
       mapImg: '',
       weatherData: [],
+      movieData: [],
       API_KEY: process.env.REACT_APP_LOCATIONIQ_API
     }
   }
@@ -39,6 +41,7 @@ class App extends React.Component {
         errorMsg: ''
       })
       this.getWeather(cityDataFromAxios.data[0].lat, cityDataFromAxios.data[0].lon);
+      this.getMovies();
     } catch (error) {
       this.setState({
         error: true,
@@ -65,6 +68,24 @@ class App extends React.Component {
     }
   }
 
+  getMovies = async () => {
+    try {
+      let movieUrl = `${process.env.REACT_APP_SERVER}/movie?searchQuery=${this.state.city}`;
+      let movieAxiosData = await axios.get(movieUrl);
+      let movieData = movieAxiosData.data;
+      console.log(movieData);
+      this.setState({
+        movieData,
+        error: false,
+        errorMsg: ''
+      })
+    } catch (error) {
+      this.setState({
+        error: true,
+        errorMsg: error.message
+      })
+    }
+  }
 
   render() {
     return (
@@ -78,9 +99,13 @@ class App extends React.Component {
           {
             this.state.error
             ? <p>{this.state.errorMsg}</p>
-            : <div>
-                {this.state.lon && <div id='return_container'><div><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div><div>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div></div>}
-                {this.state.weatherData[1] && <Weather forecast={this.state.weatherData} />}
+            : <div id='main_container'>
+                  {this.state.lon && <div id='city_header'><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div>}
+                  <div id='return_container'>
+                  {this.state.lon && <div id='map_box'>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div>}
+                  {this.state.movieData[1] && <Movie movieData={this.state.movieData} />}
+                </div>
+                  {this.state.weatherData[1] && <Weather forecast={this.state.weatherData} />}
               </div>
           }
       </main>

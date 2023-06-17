@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(97, 156, 20, 0.192);
 }
 
 code {
@@ -48,30 +49,33 @@ label {
   justify-content: space-between;
 }
 
-#return_container > div {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 #movie_container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  overflow: scroll;
-  max-width: 30em;
+  overflow-y: scroll;
   max-height: 612px;
 }
 
 #weatherContainer {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 10px 0px;
 }
 
 .weatherDay {
-  width: 12vw;
+  width: 10vw;
   padding: 10px 5px;
+  transition: 1s;
+}
+
+.weatherDay > img {
+  height: 60px;
+}
+
+.weatherDay:hover {
+  transform: scale(2);
+  translate: 0% -50%;
 }
 
 .weatherDay:nth-child(2n+1) {

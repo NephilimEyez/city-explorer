@@ -30,7 +30,7 @@ class App extends React.Component {
       let url = `https://us1.locationiq.com/v1/search?key=${this.state.API_KEY}&q=${this.state.city}&format=json`;
 
       let cityDataFromAxios = await axios.get(url);
-      console.log(cityDataFromAxios.data[0]);
+
 
       this.setState({
         locationData: cityDataFromAxios.data[0],
@@ -73,7 +73,7 @@ class App extends React.Component {
       let movieUrl = `${process.env.REACT_APP_SERVER}/movie?searchQuery=${this.state.city}`;
       let movieAxiosData = await axios.get(movieUrl);
       let movieData = movieAxiosData.data;
-      console.log(movieData);
+
       this.setState({
         movieData,
         error: false,
@@ -102,7 +102,7 @@ class App extends React.Component {
             : <div id='main_container'>
                   {this.state.lon && <div id='city_header'><h1>{this.state.city}</h1><p>Lattitude: {this.state.lat}</p><p>Longitude: {this.state.lon}</p></div>}
                   <div id='return_container'>
-                  {this.state.lon && <div id='map_box'>{this.state.lon && <img src={this.state.mapImg} alt='' />} </div>}
+                  {this.state.lon && <div id='map_box'>{this.state.lon && <img src={this.state.mapImg} alt={`Map of ${this.state.city}`} />} </div>}
                   {this.state.movieData[1] && <Movies movieData={this.state.movieData} />}
                 </div>
                   {this.state.weatherData[1] && <Weather forecast={this.state.weatherData} />}

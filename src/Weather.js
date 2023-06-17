@@ -1,5 +1,5 @@
 import React from "react";
-import WeatherDay from './modules/WeatherDay';
+import WeatherDay from './WeatherDay';
 
 class Weather extends React.Component {
 

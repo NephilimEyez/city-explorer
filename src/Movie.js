@@ -7,8 +7,8 @@ class Movie extends React.Component {
             {this.props.movieData.map((film, index) => {
                 return <div key={index} className="movieCard">
                     <h3 className="film_title">{film.title}</h3>
-                    <img src="" alt="" />
-                    <p>{film.voteRating}</p>
+                    <img src={`https://image.tmdb.org/t/p/w92/${film.poster}`} alt={`Movie poster of ${film.title}`} />
+                    {film.voteRating > 0 && <p>Rating: {film.voteRating}</p>}
                     <p>{film.description}</p>
                 </div>
             })}

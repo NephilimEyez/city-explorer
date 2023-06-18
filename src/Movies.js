@@ -1,8 +1,7 @@
 import React from "react";
-import Movie from './modules/Movie';
+import Movie from './Movie';
 
 class Movies extends React.Component {
-    // console.log(this.props.movieData);
 
     render() {
         return (
